@@ -1,0 +1,71 @@
+* {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background: -webkit-gradient(linear, right top, left bottom, from(rgb(125, 255, 73)), to(#63ffd8)) fixed;
+}
+
+.wrapper .header{
+    animation: 2s alternate infinite header;
+    /* Above is the shorthand for this 
+    animation-duration: 3s;
+    animation-direction: alternate; 
+    animation-iteration-count: infinite;
+    animation-name: animateName; 
+    */
+    height: 250px;
+}
+
+@keyframes header{
+    from{
+        font-size: 26px;
+        transform:rotate(-2deg);
+    }
+
+    to{
+        font-size: 24px;
+        transform: rotate(2deg);
+    }
+}
+
+.wrapper .aBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 275px;
+    height: 250px;
+    animation: 2s alternate infinite ease spin;
+}
+
+.wrapper .aBox p{
+    margin:0;
+    font-size: 22px;
+    animation: 2s alternate infinite ease counterSpin;
+}
+
+@keyframes spin{
+    from{
+        background-color: #5f6ef3;
+        border-radius: 75px;
+    }
+
+    to{
+        border-radius: 0px;
+        background-color: #7722cc77;
+        transform: rotateZ(180deg);
+    }
+}
+
+@keyframes counterSpin{
+    from{
+
+    }
+
+    to{
+        transform: rotateZ(-180deg);
+    }
+}
