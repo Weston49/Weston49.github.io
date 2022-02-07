@@ -1,21 +1,47 @@
 * {
-    text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    margin:0;
+    padding:0;
 }
 
 body{
     background: -webkit-gradient(linear, right top, left bottom, from(rgb(125, 255, 73)), to(#63ffd8)) fixed;
 }
 
+/* nav stuff */
+
+.nav{
+    background-color: #ffffff33;
+    height: fit-content;
+}
+
+.nav .navItems{
+    width: fit-content;
+    text-align: right;
+    float: right;
+}
+
+.nav p{
+    display: inline-block;
+    width: fit-content;
+    padding: 20px;
+}
+
+.nav a{
+    color: black;
+    text-decoration: none;
+}
+
+.nav a:visited{
+    color:rgb(1, 1, 146);
+}
+
+/* End of Nav Stuff */
+
 .wrapper .header{
     animation: 2s alternate infinite header;
-    /* Above is the shorthand for this 
-    animation-duration: 3s;
-    animation-direction: alternate; 
-    animation-iteration-count: infinite;
-    animation-name: animateName; 
-    */
-    height: 250px;
+    margin: 20px 0px 100px;
+    text-align: center;
 }
 
 @keyframes header{
