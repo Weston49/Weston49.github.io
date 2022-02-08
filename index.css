@@ -142,11 +142,63 @@ section{
     margin:0px 20px 0px 10px;
 }
 
-
-
 .wrapper .footer{
     background-color: rgba(199, 199, 199, 0.486);
     text-align: center;
     font-style: italic;
     padding: 15px;
+}
+
+.wrapper .game{
+    height: 100vh;
+    font-size: 32px;
+}
+
+.wrapper .game table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:50px;
+    background-color: #b6b6b66b;
+}
+
+.wrapper .game td{
+    padding:10px 19px;
+    margin:10px;
+}
+
+.wrapper .game .controls{
+    text-align: center;
+    margin: 20px;
+}
+
+.wrapper .game button{
+    font-size: 26px;
+    border:0;
+    border-radius: 5px;
+    padding:10px;
+}
+
+.wrapper .game #redButton{
+    color: red;
+    background-color: red;
+}
+.wrapper .game #greenButton{
+    color: green;
+    background-color: green;
+}
+.wrapper .game #blueButton{
+    color: blue;
+    background-color: blue;
+}
+.wrapper .game #yellowButton{
+    color: yellow;
+    background-color: yellow;
+}
+.wrapper .game #purpleButton{
+    color: purple;
+    background-color: purple;
+}
+.wrapper .game #whiteButton{
+    color: white;
+    background-color: white;
 }
