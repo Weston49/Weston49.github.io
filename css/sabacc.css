@@ -1,0 +1,17 @@
+body{
+    text-align: center;
+}
+
+.discard{
+    color:red;
+    font-size: 30px;
+    padding-top: 50px;
+}
+
+#deck{
+    border-radius: 10px;
+    height: 150px;
+    width: 75px;
+    border: 1px solid black;
+    
+}
