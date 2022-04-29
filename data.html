@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Displaying</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/dataVis.js"></script>
+    <link rel="stylesheet" href="/css/data.css">
+</head>
+<body>
+    <h1>TBA data and API connection</h1>
+    <p>Only works for datasets formatted similar to codes like /teams/{page_num}</p>
+    <input id='toKidnap' type="text"></input>
+    <button onclick="kidnap(document.getElementById('toKidnap').value)">kidnap this data</button>
+    <p id="displayText"></p>
+    <table>
+        <thead>
+            <tr id="headers">
+
+            </tr>
+        </thead>
+        <tbody id="tbl">
+
+        </tbody>
+    </table>
+</body>
+</html>

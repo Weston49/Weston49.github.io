@@ -1,0 +1,5 @@
+Things i want to add data visualization for
+
+graph displaying average point value at every regional, highest score at each regional, etc.
+Pi chart of awards at each division at worlds
+
