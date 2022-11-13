@@ -1,0 +1,84 @@
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.wrapper{
+    width: 90vw;
+    height: 80vh;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 4fr 9fr 4fr;
+}
+
+h1{
+    padding: 0px;
+    margin: auto;    
+}
+
+h2{
+    padding: 0px;
+    margin: auto;
+}
+
+h3{
+    background-color:darkcyan;
+    border-radius: 10px;
+    margin: 15px 5px;
+    padding: 35px 5px;
+}
+
+.card{
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color:rgb(119, 119, 119);
+    width: 50px;
+    height: 70px;
+    border-radius: 7px;
+}
+
+.opponentHand{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 3fr;
+    margin-top: 15px;
+}
+
+.opponentHand .card{
+    margin: 0px 0px;
+}
+
+.gameBoard{
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.gameBoard .lane{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gameBoard .lane .cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.gameBoard .lane .card{
+    margin: 5px;
+}
+
+.playerHand{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 3fr;
+    margin-top: 15px;
+}
