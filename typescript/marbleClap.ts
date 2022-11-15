@@ -87,9 +87,24 @@ class Card {
     }
 }
 
-//an array of all the cards being used in the current puzzle, in the future generate this array from iterating through a json file
-let cards: Card
-[
-    new Card("Hulk", 6, 12, "Hulk smash!", "neither", -1, false),
-    new Card("Quicksilver", 1, 2, "Something here i dont remember", "neither", -1, true)
-];
+//Generates the card array from cards.json
+let cards: Card[];
+fetch('../cards.json')
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
+function runAbility(card: Card){
+    switch (card.abilityID) {
+        case 1:
+            //runs mister fantastic's ability :)
+            console.log("mister fantastic ability ran");
+            break;
+        case 2:
+            //runs someone else's ability
+            console.log("Someone else ability epic");
+        default:
+            //runs when the abilityID is -1 or something has broken
+            console.log("Nice job ya broke it");
+            break;
+    }
+}

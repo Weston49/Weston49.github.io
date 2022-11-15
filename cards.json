@@ -1,0 +1,29 @@
+{
+    "card1":{
+        "name":"Quicksilver", 
+        "cost": 1, 
+        "power": 2,
+        "description": "Gotta go fast",
+        "type": "neither",
+        "abilityID": -1,
+        "hasAbility": true
+    },
+    "card2":{
+        "name":"Hulk", 
+        "cost": 6, 
+        "power": 12,
+        "description": "Hulk smash!!",
+        "type": "neither",
+        "abilityID": -1,
+        "hasAbility": false
+    },
+    "card3":{
+        "name":"Mister Fantastic", 
+        "cost": 3, 
+        "power": 2,
+        "description": "Adds 2 power to the adjacent locations",
+        "type": "ongoing",
+        "abilityID": 1,
+        "hasAbility": true
+    }
+}
