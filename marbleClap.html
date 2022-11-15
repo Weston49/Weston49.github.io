@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marble Clap Puzzle</title>
     <link rel="stylesheet" href="marbleClap.css">
-    <script src="./marbleClap.js"></script>
+    <script src="./js/marbleClap.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -15,64 +15,70 @@
         <div class="opponentHand">
             <h2>Opponent Hand</h2>
             <div class="cards">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
+                <div class="card" id="opponentCard1"></div>
+                <div class="card" id="opponentCard2"></div>
+                <div class="card" id="opponentCard3"></div>
+                <div class="card" id="opponentCard4"></div>
+                <div class="card" id="opponentCard5"></div>
             </div>
         </div>
 
         <div class="gameBoard">
-            <div class="lane">
+            <div class="lane" id="lane1">
                 <div class="cards">
-                    <div class="card" id="card1"></div>
-                    <div class="card" id="card2"></div>
-                    <div class="card" id="card3"></div>
-                    <div class="card" id="card4"></div>
+                    <div class="card" id="opponentCard1lane1">- - - 6</div>
+                    <div class="card" id="opponentCard2lane1">- - - 2</div>
+                    <div class="card" id="opponentCard3lane1"></div>
+                    <div class="card" id="opponentCard4lane1"></div>
                 </div>
-                <div class="location">
+                <div class="location" id="location1">
+                    <p class="opponentPower" id="lane1opponentPower">8</p>
                     <h3>Location 1</h3>
+                    <p class="playerPower" id="lane1playerPower">5</p>
                 </div>
                 <div class="cards">
-                    <div class="card" id="card1"></div>
-                    <div class="card" id="card2"></div>
-                    <div class="card" id="card3"></div>
-                    <div class="card" id="card4"></div>
+                    <div class="card" id="playerCard1lane1">- - - 1</div>
+                    <div class="card" id="playerCard2lane1">- - - 2</div>
+                    <div class="card" id="playerCard3lane1">- - - 2</div>
+                    <div class="card" id="playerCard4lane1"></div>
                 </div>
             </div>
-            <div class="lane">
+            <div class="lane" id="lane2">
                 <div class="cards">
-                    <div class="card" id="card1"></div>
-                    <div class="card" id="card2"></div>
-                    <div class="card" id="card3"></div>
-                    <div class="card" id="card4"></div>
+                    <div class="card" id="opponentCard1lane2">- - - 3</div>
+                    <div class="card" id="opponentCard2lane2">- - - 8</div>
+                    <div class="card" id="opponentCard3lane2">- - - 1</div>
+                    <div class="card" id="opponentCard4lane2"></div>
                 </div>
-                <div class="location">
+                <div class="location" id="location2">
+                    <p class="opponentPower" id="lane2opponentPower">12</p>
                     <h3>Location 2</h3>
+                    <p class="playerPower" id="lane2playerPower">10</p>
                 </div>
                 <div class="cards">
-                    <div class="card" id="card1"></div>
-                    <div class="card" id="card2"></div>
-                    <div class="card" id="card3"></div>
-                    <div class="card" id="card4"></div>
+                    <div class="card" id="playerCard1lane2">- - - 1</div>
+                    <div class="card" id="playerCard2lane2">- - - 9</div>
+                    <div class="card" id="playerCard3lane2"></div>
+                    <div class="card" id="playerCard4lane2"></div>
                 </div>
             </div>
-            <div class="lane">
+            <div class="lane" id="lane3">
                 <div class="cards">
-                    <div class="card" id="card1"></div>
-                    <div class="card" id="card2"></div>
-                    <div class="card" id="card3"></div>
-                    <div class="card" id="card4"></div>
+                    <div class="card" id="opponentCard1lane3">- - - 12</div>
+                    <div class="card" id="opponentCard2lane3"></div>
+                    <div class="card" id="opponentCard3lane3"></div>
+                    <div class="card" id="opponentCard4lane3"></div>
                 </div>
-                <div class="location">
+                <div class="location" id="location3">
+                    <p class="opponentPower" id="lane3opponentPower">12</p>
                     <h3>Location 3</h3>
+                    <p class="playerPower" id="lane3playerPower">3</p>
                 </div>
                 <div class="cards">
-                    <div class="card" id="card1"></div>
-                    <div class="card" id="card2"></div>
-                    <div class="card" id="card3"></div>
-                    <div class="card" id="card4"></div>
+                    <div class="card" id="playerCard1lane3">- - - 3</div>
+                    <div class="card" id="playerCard2lane3"></div>
+                    <div class="card" id="playerCard3lane3"></div>
+                    <div class="card" id="playerCard4lane3"></div>
                 </div>
             </div>
         </div>
@@ -80,11 +86,11 @@
         <div class="playerHand">
             <h2>Your Hand</h2>
             <div clas="cards">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
+                <div class="card" id="playerCard1"></div>
+                <div class="card" id="playerCard2"></div>
+                <div class="card" id="playerCard3"></div>
+                <div class="card" id="playerCard4"></div>
+                <div class="card" id="playerCard5"></div>
             </div>
         </div>
     </div>
