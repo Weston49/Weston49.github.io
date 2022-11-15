@@ -33,21 +33,30 @@ class Lane { //Primarily just holds values and which cards are in the lane
 
     }
 }
-
-let cards: Card[]; //an array of all the cards being used in the current puzzle
-
 class Card {
     name: string;
     cost: number;
-    originialCost: number; //Number to calculate things like killmonger when cost has been changed 
+    originalCost: number; //Number to calculate things like killmonger when cost has been changed 
     power: number;
+    originalPower: number;
     description: string;
     type: string; //ongoing, onReveal, neither
-    posistion: number; //position is -1 if the card is in a hand and not on the board, 0-4 to describe where in its lane
     abilityID: number; //abilityID is -1 if it has no ability
+    hasAbility: boolean; //mainly for cards like quicksilver who have ability but it is not used in the puzzles
+    posistion: number; //position is -1 if the card is in a hand and not on the board, 0-4 to describe where in its lane
     currentLane: Lane;
 
-    createCard
+    constructor(name: string, cost: number, power: number, description: string, type: string, abilityID: number, hasAbility: boolean){
+        this.name = name;
+        this.cost = cost;
+        this.power = power;
+        this.originalCost = cost;
+        this.originalPower = power;
+        this.description = description;
+        this.type = type;
+        this.abilityID = abilityID;
+        this.hasAbility = hasAbility;
+    }
 
     play(lane: Lane){
 
@@ -77,3 +86,10 @@ class Card {
 
     }
 }
+
+//an array of all the cards being used in the current puzzle, in the future generate this array from iterating through a json file
+let cards: Card
+[
+    new Card("Hulk", 6, 12, "Hulk smash!", "neither", -1, false),
+    new Card("Quicksilver", 1, 2, "Something here i dont remember", "neither", -1, true)
+];

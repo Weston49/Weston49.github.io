@@ -21,9 +21,17 @@ var Lane = /** @class */ (function () {
     };
     return Lane;
 }());
-var cards; //an array of all the cards being used in the current puzzle
 var Card = /** @class */ (function () {
-    function Card() {
+    function Card(name, cost, power, description, type, abilityID, hasAbility) {
+        this.name = name;
+        this.cost = cost;
+        this.power = power;
+        this.originalCost = cost;
+        this.originalPower = power;
+        this.description = description;
+        this.type = type;
+        this.abilityID = abilityID;
+        this.hasAbility = hasAbility;
     }
     Card.prototype.play = function (lane) {
     };
@@ -41,3 +49,9 @@ var Card = /** @class */ (function () {
     };
     return Card;
 }());
+//an array of all the cards being used in the current puzzle, in the future generate this array from iterating through a json file
+var cards;
+[
+    new Card("Hulk", 6, 12, "Hulk smash!", "neither", -1, false),
+    new Card("Quicksilver", 1, 2, "Something here i dont remember", "neither", -1, true)
+];
