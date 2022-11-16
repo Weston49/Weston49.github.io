@@ -4,18 +4,18 @@
         "cost": 1, 
         "power": 2,
         "description": "Gotta go fast",
-        "type": "neither",
+        "type": "other",
         "abilityID": -1,
-        "hasAbility": true
+        "pool": 0
     },
     "hulk":{
         "name":"Hulk", 
         "cost": 6, 
         "power": 12,
         "description": "Hulk smash!!",
-        "type": "neither",
+        "type": "none",
         "abilityID": -1,
-        "hasAbility": false
+        "pool": 0
     },
     "mister_fantastic":{
         "name":"Mister Fantastic", 
@@ -24,6 +24,6 @@
         "description": "Adds 2 power to the adjacent locations",
         "type": "ongoing",
         "abilityID": 1,
-        "hasAbility": true
+        "pool": 0
     }
 }

@@ -22,7 +22,7 @@ var Lane = /** @class */ (function () {
     return Lane;
 }());
 var Card = /** @class */ (function () {
-    function Card(name, cost, power, description, type, abilityID, hasAbility) {
+    function Card(name, cost, power, description, type, abilityID, pool) {
         this.name = name;
         this.cost = cost;
         this.power = power;
@@ -31,7 +31,7 @@ var Card = /** @class */ (function () {
         this.description = description;
         this.type = type;
         this.abilityID = abilityID;
-        this.hasAbility = hasAbility;
+        this.pool = pool;
     }
     Card.prototype.play = function (lane) {
     };
@@ -51,13 +51,14 @@ var Card = /** @class */ (function () {
 }());
 //Generates the card array from cards.json
 var cards;
+var whichCards = [1, 3]; // an array of
 fetch('../cards.json')
     .then(function (response) { return response.json(); })
-    .then(function (json) { return generateCards(json); });
-function generateCards(cards) {
-    for (var i = 0; i < Object.keys(cards).length; i++) {
-        console.log(cards[Object.keys(cards)[i]].name); // just console logging each card name to make sure this is grabbing them correctly
-        console.log(cards[Object.keys(cards)[i]].description);
+    .then(function (json) { return generateCards(json, whichCards); });
+function generateCards(cardsJSON, whichCards) {
+    for (var i = 0; i < whichCards.length; i++) {
+        console.log(cards[Object.keys(cardsJSON)[i]].name); // just console logging each card name to make sure this is grabbing them correctly
+        console.log(cards[Object.keys(cardsJSON)[i]].description);
     }
     ;
 }

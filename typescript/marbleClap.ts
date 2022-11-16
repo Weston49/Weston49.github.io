@@ -40,13 +40,13 @@ class Card {
     power: number;
     originalPower: number;
     description: string;
-    type: string; //ongoing, onReveal, neither
-    abilityID: number; //abilityID is -1 if it has no ability
-    hasAbility: boolean; //mainly for cards like quicksilver who have ability but it is not used in the puzzles
+    type: string; //ongoing, onReveal, other, or none
+    abilityID: number; //abilityID just a unique number for later usage, just an integer for later use
     posistion: number; //position is -1 if the card is in a hand and not on the board, 0-4 to describe where in its lane
+    pool: number;
     currentLane: Lane;
 
-    constructor(name: string, cost: number, power: number, description: string, type: string, abilityID: number, hasAbility: boolean){
+    constructor(name: string, cost: number, power: number, description: string, type: string, abilityID: number, pool: number){
         this.name = name;
         this.cost = cost;
         this.power = power;
@@ -55,7 +55,7 @@ class Card {
         this.description = description;
         this.type = type;
         this.abilityID = abilityID;
-        this.hasAbility = hasAbility;
+        this.pool = pool;
     }
 
     play(lane: Lane){
@@ -89,14 +89,15 @@ class Card {
 
 //Generates the card array from cards.json
 let cards;
+let whichCards = [1,3]; // an array of
 fetch('../cards.json')
     .then((response) => response.json())
-    .then((json) => generateCards(json));
+    .then((json) => generateCards(json, whichCards));
 
-function generateCards(cards){
-    for (let i = 0; i < Object.keys(cards).length; i++) {
-        console.log(cards[Object.keys(cards)[i]].name); // just console logging each card name to make sure this is grabbing them correctly
-        console.log(cards[Object.keys(cards)[i]].description);
+function generateCards(cardsJSON, whichCards){
+    for (let i = 0; i < whichCards.length; i++) {
+        console.log(cards[Object.keys(cardsJSON)[i]].name); // just console logging each card name to make sure this is grabbing them correctly
+        console.log(cards[Object.keys(cardsJSON)[i]].description);
     };
 }
 
