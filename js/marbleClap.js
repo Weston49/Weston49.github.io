@@ -22,14 +22,14 @@ var Lane = /** @class */ (function () {
     return Lane;
 }());
 var Card = /** @class */ (function () {
-    function Card(name, cost, power, description, type, abilityID, pool) {
+    function Card(name, cost, power, description, abilityType, abilityID, pool) {
         this.name = name;
         this.cost = cost;
         this.power = power;
         this.originalCost = cost;
         this.originalPower = power;
         this.description = description;
-        this.type = type;
+        this.abilityType = abilityType;
         this.abilityID = abilityID;
         this.pool = pool;
     }
@@ -50,7 +50,7 @@ var Card = /** @class */ (function () {
     return Card;
 }());
 //Generates the card array from cards.json
-var cards;
+var cards = [];
 var whichCards = [0, 2]; // an array of which cards to generate, this example will not generate hulk
 fetch('../cards.json')
     .then(function (response) { return response.json(); })
@@ -59,9 +59,10 @@ function generateCards(cardsJSON, whichCards) {
     for (var i = 0; i < whichCards.length; i++) {
         var currentCard = cardsJSON[Object.keys(cardsJSON)[whichCards[i]]]; // this is confusing and weird just trust it works cause it does
         console.log(currentCard.name); //testing that it does work
-        cards.push(new Card(currentCard.name, currentCard.cost, currentCard.power, currentCard.description, currentCard.type, currentCard.abilityID, currentCard.pool));
+        cards.push(new Card(currentCard.name, currentCard.cost, currentCard.power, currentCard.description, currentCard.abilityType, currentCard.abilityID, currentCard.pool));
     }
     ;
+    console.log(cards); // shows the generated cards, pogu
 }
 function runAbility(card) {
     switch (card.abilityID) {

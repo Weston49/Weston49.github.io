@@ -40,20 +40,20 @@ class Card {
     power: number;
     originalPower: number;
     description: string;
-    type: string; //ongoing, onReveal, other, or none !!other and none are not the same!! *patriot* 
+    abilityType: string; //ongoing, onReveal, other, or none !!other and none are not the same!! *patriot* 
     abilityID: number; //abilityID just a unique number for later usage, just an integer for later use, still -1 for no ability
     posistion: number; //position is -1 if the card is in a hand and not on the board, 0-4 to describe where in its lane
     pool: number;
     currentLane: Lane;
 
-    constructor(name: string, cost: number, power: number, description: string, type: string, abilityID: number, pool: number){
+    constructor(name: string, cost: number, power: number, description: string, abilityType: string, abilityID: number, pool: number){
         this.name = name;
         this.cost = cost;
         this.power = power;
         this.originalCost = cost;
         this.originalPower = power;
         this.description = description;
-        this.type = type;
+        this.abilityType = abilityType;
         this.abilityID = abilityID;
         this.pool = pool;
     }
@@ -88,7 +88,7 @@ class Card {
 }
 
 //Generates the card array from cards.json
-let cards;
+let cards: Card[] = [];
 let whichCards = [0,2]; // an array of which cards to generate, this example will not generate hulk
 fetch('../cards.json')
     .then((response) => response.json())
@@ -98,8 +98,9 @@ function generateCards(cardsJSON, whichCards){
     for (let i = 0; i < whichCards.length; i++) {
         let currentCard = cardsJSON[Object.keys(cardsJSON)[whichCards[i]]]; // this is confusing and weird just trust it works cause it does
         console.log(currentCard.name); //testing that it does work
-        cards.push(new Card(currentCard.name, currentCard.cost, currentCard.power, currentCard.description, currentCard.type, currentCard.abilityID, currentCard.pool))
+        cards.push(new Card(currentCard.name, currentCard.cost, currentCard.power, currentCard.description, currentCard.abilityType, currentCard.abilityID, currentCard.pool));
     };
+    console.log(cards); // shows the generated cards, pogu
 }
 
 function runAbility(card: Card){
