@@ -25,6 +25,12 @@ class Lane { //Primarily just holds values and which cards are in the lane
     playerPower: number;
     abilityID: number; //abilityID is -1 if no ability or if ability is meaningless to the puzzle (like central park)
 
+    constructor(name: string, description: string, abilityID: number){
+        this.name = name;
+        this.description = description;
+        this.abilityID = abilityID;
+    }
+
     destory(){ //Just for puzzles with Galactus for now
 
     }
@@ -87,12 +93,26 @@ class Card {
     }
 }
 
+let lanes: Lane[] = [];
+let whichLocations = [0,2,3]; //should always just be three locations
+fetch('../locations.json')
+    .then((lane_response) => lane_response.json())
+    .then((lane_json) => generateLanes(lane_json, whichLocations));
+function generateLanes(locationsJSON, whichLocations){
+    for(let i = 0; i < whichLocations.length; i++){
+        let currentLocation = locationsJSON[Object.keys(locationsJSON)[whichLocations[i]]];
+        console.log(currentLocation.name);
+        lanes.push(new Lane(currentLocation.name, currentLocation.description, currentLocation.abilityID));
+    }
+    console.log(lanes);
+}
+
 //Generates the card array from cards.json
 let cards: Card[] = [];
 let whichCards = [0,2]; // an array of which cards to generate, this example will not generate hulk
 fetch('../cards.json')
-    .then((response) => response.json())
-    .then((json) => generateCards(json, whichCards));
+    .then((card_response) => card_response.json())
+    .then((card_json) => generateCards(card_json, whichCards));
 
 function generateCards(cardsJSON, whichCards){
     for (let i = 0; i < whichCards.length; i++) {

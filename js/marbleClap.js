@@ -13,7 +13,10 @@ var Deck = /** @class */ (function () {
     return Deck;
 }());
 var Lane = /** @class */ (function () {
-    function Lane() {
+    function Lane(name, description, abilityID) {
+        this.name = name;
+        this.description = description;
+        this.abilityID = abilityID;
     }
     Lane.prototype.destory = function () {
     };
@@ -49,12 +52,25 @@ var Card = /** @class */ (function () {
     };
     return Card;
 }());
+var lanes = [];
+var whichLocations = [0, 2, 3]; //should always just be three locations
+fetch('../locations.json')
+    .then(function (lane_response) { return lane_response.json(); })
+    .then(function (lane_json) { return generateLanes(lane_json, whichLocations); });
+function generateLanes(locationsJSON, whichLocations) {
+    for (var i = 0; i < whichLocations.length; i++) {
+        var currentLocation = locationsJSON[Object.keys(locationsJSON)[whichLocations[i]]];
+        console.log(currentLocation.name);
+        lanes.push(new Lane(currentLocation.name, currentLocation.description, currentLocation.abilityID));
+    }
+    console.log(lanes);
+}
 //Generates the card array from cards.json
 var cards = [];
 var whichCards = [0, 2]; // an array of which cards to generate, this example will not generate hulk
 fetch('../cards.json')
-    .then(function (response) { return response.json(); })
-    .then(function (json) { return generateCards(json, whichCards); });
+    .then(function (card_response) { return card_response.json(); })
+    .then(function (card_json) { return generateCards(card_json, whichCards); });
 function generateCards(cardsJSON, whichCards) {
     for (var i = 0; i < whichCards.length; i++) {
         var currentCard = cardsJSON[Object.keys(cardsJSON)[whichCards[i]]]; // this is confusing and weird just trust it works cause it does
