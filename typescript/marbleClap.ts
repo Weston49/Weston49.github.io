@@ -40,8 +40,8 @@ class Card {
     power: number;
     originalPower: number;
     description: string;
-    type: string; //ongoing, onReveal, other, or none
-    abilityID: number; //abilityID just a unique number for later usage, just an integer for later use
+    type: string; //ongoing, onReveal, other, or none !!other and none are not the same!! *patriot* 
+    abilityID: number; //abilityID just a unique number for later usage, just an integer for later use, still -1 for no ability
     posistion: number; //position is -1 if the card is in a hand and not on the board, 0-4 to describe where in its lane
     pool: number;
     currentLane: Lane;
@@ -89,15 +89,16 @@ class Card {
 
 //Generates the card array from cards.json
 let cards;
-let whichCards = [1,3]; // an array of
+let whichCards = [0,2]; // an array of which cards to generate, this example will not generate hulk
 fetch('../cards.json')
     .then((response) => response.json())
     .then((json) => generateCards(json, whichCards));
 
 function generateCards(cardsJSON, whichCards){
     for (let i = 0; i < whichCards.length; i++) {
-        console.log(cards[Object.keys(cardsJSON)[i]].name); // just console logging each card name to make sure this is grabbing them correctly
-        console.log(cards[Object.keys(cardsJSON)[i]].description);
+        let currentCard = cardsJSON[Object.keys(cardsJSON)[whichCards[i]]]; // this is confusing and weird just trust it works cause it does
+        console.log(currentCard.name); //testing that it does work
+        cards.push(new Card(currentCard.name, currentCard.cost, currentCard.power, currentCard.description, currentCard.type, currentCard.abilityID, currentCard.pool))
     };
 }
 
@@ -105,6 +106,10 @@ function runAbility(card: Card){
     switch (card.abilityID) {
         case 1:
             //runs mister fantastic's ability :)
+            //*psuedocode 
+            //if card.lane is the middle then add two power to left and right lanes
+            //if card.lane is left or right then add two power to right and left
+            //store the value 2 in a variable so it can be more easily doubled by onslaught etc.
             console.log("mister fantastic ability ran");
             break;
         case 2:
