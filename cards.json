@@ -5,7 +5,6 @@
         "power": 2,
         "description": "Gotta go fast",
         "abilityType": "other",
-        "abilityID": -1,
         "pool": 0
     },
     "hulk":{
@@ -14,7 +13,6 @@
         "power": 12,
         "description": "Hulk smash!!",
         "abilityType": "none",
-        "abilityID": -1,
         "pool": 0
     },
     "mister_fantastic":{
@@ -23,7 +21,6 @@
         "power": 2,
         "description": "Adds 2 power to the adjacent locations",
         "abilityType": "ongoing",
-        "abilityID": 1,
         "pool": 0
     }
 }
