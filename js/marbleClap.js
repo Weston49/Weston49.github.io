@@ -53,7 +53,14 @@ var Card = /** @class */ (function () {
 var cards;
 fetch('../cards.json')
     .then(function (response) { return response.json(); })
-    .then(function (json) { return console.log(json); });
+    .then(function (json) { return generateCards(json); });
+function generateCards(cards) {
+    for (var i = 0; i < Object.keys(cards).length; i++) {
+        console.log(cards[Object.keys(cards)[i]].name); // just console logging each card name to make sure this is grabbing them correctly
+        console.log(cards[Object.keys(cards)[i]].description);
+    }
+    ;
+}
 function runAbility(card) {
     switch (card.abilityID) {
         case 1:

@@ -88,10 +88,17 @@ class Card {
 }
 
 //Generates the card array from cards.json
-let cards: Card[];
+let cards;
 fetch('../cards.json')
     .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((json) => generateCards(json));
+
+function generateCards(cards){
+    for (let i = 0; i < Object.keys(cards).length; i++) {
+        console.log(cards[Object.keys(cards)[i]].name); // just console logging each card name to make sure this is grabbing them correctly
+        console.log(cards[Object.keys(cards)[i]].description);
+    };
+}
 
 function runAbility(card: Card){
     switch (card.abilityID) {
