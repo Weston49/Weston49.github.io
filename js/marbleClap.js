@@ -14,6 +14,10 @@ var Deck = /** @class */ (function () {
 }());
 var Lane = /** @class */ (function () {
     function Lane(name, description) {
+        this.opponentCards = [];
+        this.playerCards = [];
+        this.opponentPower = 0;
+        this.playerPower = 0;
         this.name = name;
         this.description = description;
     }
@@ -35,6 +39,14 @@ var Card = /** @class */ (function () {
         this.pool = pool;
     }
     Card.prototype.play = function (lane) {
+        if (lane.playerCards.length != 4) {
+            this.currentLane = lane;
+            this.position = lane.playerCards.length;
+            lane.playerCards.push(this);
+        }
+        else {
+            console.log("location is full");
+        }
     };
     Card.prototype.destroy = function () {
     };
@@ -45,6 +57,11 @@ var Card = /** @class */ (function () {
     Card.prototype.changeCost = function (cost) {
     };
     Card.prototype.changePosition = function (position) {
+        this.position = position;
+        if (this.position = -1) {
+            //add the card to hand
+            console.log(hand);
+        }
     };
     Card.prototype.changeLane = function (lane) {
     };
@@ -77,6 +94,19 @@ function generateCards(cardsJSON, whichCards) {
     }
     ;
     console.log(cards); // shows the generated cards, pogu
+}
+var hand = [];
+function drawCard(card) {
+    hand.push(card);
+    card.changePosition(-1);
+}
+function calculatePower(lane) {
+    var power = 0;
+    lane.playerCards.forEach(function (card) {
+        power += card.power;
+    });
+    lane.playerPower = power;
+    console.log(lane.playerPower);
 }
 function runAbility(card) {
     switch (card.name) {

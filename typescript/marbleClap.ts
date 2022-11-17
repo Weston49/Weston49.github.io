@@ -19,10 +19,10 @@ class Deck {
 class Lane { //Primarily just holds values and which cards are in the lane
     name: string;
     description: string;
-    opponentCards: Card[];
-    playerCards: Card[];
-    opponentPower: number;
-    playerPower: number;
+    opponentCards: Card[] = [];
+    playerCards: Card[] = [];
+    opponentPower: number = 0;
+    playerPower: number = 0;
 
     constructor(name: string, description: string){
         this.name = name;
@@ -45,7 +45,7 @@ class Card {
     originalPower: number;
     description: string;
     abilityType: string; //ongoing, onReveal, other, or none !!other and none are not the same!! *patriot* 
-    posistion: number; //position is -1 if the card is in a hand and not on the board, 0-4 to describe where in its lane
+    position: number; //position is -1 if the card is in a hand and not on the board, 0-3 to describe where in its lane, undefined if in 'deck'
     pool: number;
     currentLane: Lane;
 
@@ -61,7 +61,13 @@ class Card {
     }
 
     play(lane: Lane){
-
+        if(lane.playerCards.length != 4){
+            this.currentLane = lane;
+            this.position = lane.playerCards.length;
+            lane.playerCards.push(this);
+        }else{
+            console.log("location is full");
+        }
     }
 
     destroy(){
@@ -81,12 +87,17 @@ class Card {
     }
 
     changePosition(position: number){
-
+        this.position = position;
+        if(this.position = -1){
+            //add the card to hand
+            console.log(hand);
+        }
     }
 
     changeLane(lane: Lane){
 
     }
+
 }
 
 let lanes: Lane[] = [];
@@ -117,6 +128,22 @@ function generateCards(cardsJSON, whichCards){
         cards.push(new Card(currentCard.name, currentCard.cost, currentCard.power, currentCard.description, currentCard.abilityType, currentCard.pool));
     };
     console.log(cards); // shows the generated cards, pogu
+}
+
+let hand: Card[] = [];
+
+function drawCard(card: Card){
+    hand.push(card);
+    card.changePosition(-1);
+}
+
+function calculatePower(lane: Lane){
+    let power = 0;
+    lane.playerCards.forEach(card => {
+        power += card.power;
+    });
+    lane.playerPower = power;
+    console.log(lane.playerPower);
 }
 
 function runAbility(card: Card){
