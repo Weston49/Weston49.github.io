@@ -1,5 +1,5 @@
-{
-    "quicksilver":{
+[
+    {
         "name":"Quicksilver", 
         "cost": 1, 
         "power": 2,
@@ -7,7 +7,7 @@
         "abilityType": "other",
         "pool": 0
     },
-    "hulk":{
+    {
         "name":"Hulk", 
         "cost": 6, 
         "power": 12,
@@ -15,7 +15,7 @@
         "abilityType": "none",
         "pool": 0
     },
-    "mister_fantastic":{
+    {
         "name":"Mister Fantastic", 
         "cost": 3, 
         "power": 2,
@@ -23,4 +23,4 @@
         "abilityType": "ongoing",
         "pool": 0
     }
-}
+]

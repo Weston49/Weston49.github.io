@@ -82,23 +82,42 @@ function generateLanes(locationsJSON, whichLocations) {
 }
 //Generates the card array from cards.json
 var cards = [];
-var whichCards = [0, 2]; // an array of which cards to generate, this example will not generate hulk
-fetch('../cards.json')
+var whichCards = [0, 1, 2]; // an array of which cards to generate, this example will not generate hulk
+fetch('https://snapi.lol/api/cards')
     .then(function (card_response) { return card_response.json(); })
     .then(function (card_json) { return generateCards(card_json, whichCards); });
+//just for now fetching and then drawing the first three cards to your hand
+var hand = [];
 function generateCards(cardsJSON, whichCards) {
     for (var i = 0; i < whichCards.length; i++) {
-        var currentCard = cardsJSON[Object.keys(cardsJSON)[whichCards[i]]]; // this is confusing and weird just trust it works cause it does
+        var currentCard = cardsJSON[whichCards[i]]; // this is confusing and weird just trust it works cause it does
         console.log(currentCard.name); //testing that it does work
         cards.push(new Card(currentCard.name, currentCard.cost, currentCard.power, currentCard.description, currentCard.abilityType, currentCard.pool));
     }
     ;
     console.log(cards); // shows the generated cards, pogu
 }
-var hand = [];
+function cardClicked(whichCard) {
+    for (var i = 1; i <= 5; i++) {
+        document.getElementById("playerCard" + i).className = "card";
+    }
+    if (whichCard != -1) {
+        document.getElementById("playerCard" + whichCard).className = "card clicked";
+    }
+}
 function drawCard(card) {
     hand.push(card);
     card.changePosition(-1);
+    updatePlayerHand();
+}
+function updatePlayerHand() {
+    for (var i = 0; i < hand.length; i++) {
+        var card = hand[i];
+        var j = (i + 1).toString();
+        document.getElementById("playerCard" + j + "Cost").innerHTML = card.cost.toString();
+        document.getElementById("playerCard" + j + "Power").innerHTML = card.power.toString();
+        document.getElementById("playerCard" + j + "Name").innerHTML = card.name;
+    }
 }
 function calculatePower(lane) {
     var power = 0;
