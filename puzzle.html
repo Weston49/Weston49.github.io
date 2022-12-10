@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+<body>
+    <style>
+        .wrapper{
+            margin-left: auto;
+            margin-right: auto;
+            width: 60vw;
+        }
+        .draggable {
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            background-color: #29e;
+            color: white;
+            border-radius: 0.75em;
+            touch-action: none;
+            user-select: none;
+        }
+        .draggable img{
+            width: 250px;
+            height: 250px;
+        }
+    </style>
+    <script>
+        var rotations = [1,1,1,1,1,1,1,1,1]
+        function rotateTile(whichTile){
+            document.getElementById("t" + whichTile + "image").style.rotate = rotations[whichTile-1]*90 + "deg"
+            rotations[whichTile-1]++;
+        }
+
+        const position1 = { x: 0, y: 0 }
+        const tile1 = interact('#t1');
+        tile1.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position1.x += event.dx
+                position1.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position1.x}px, ${position1.y}px)`
+                },
+            }
+        })
+        tile1.on('tap', function (event) {
+            rotateTile(1);
+        })
+        //========= new tile ===========//
+        const position2 = { x: 0, y: 0 }
+        const tile2 = interact('#t2');
+        tile2.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position2.x += event.dx
+                position2.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position2.x}px, ${position2.y}px)`
+                },
+            }
+        })
+        tile2.on('tap', function (event) {
+            rotateTile(2);
+        })
+        //========= new tile ===========//
+        const position3 = { x: 0, y: 0 }
+        const tile3 = interact('#t3');
+        tile3.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position3.x += event.dx
+                position3.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position3.x}px, ${position3.y}px)`
+                },
+            }
+        })
+        tile3.on('tap', function (event) {
+            rotateTile(3);
+        })
+        //========= new tile ===========//
+        const position4 = { x: 0, y: 0 }
+        const tile4 = interact('#t4');
+        tile4.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position4.x += event.dx
+                position4.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position4.x}px, ${position4.y}px)`
+                },
+            }
+        })
+        tile4.on('tap', function (event) {
+            rotateTile(4);
+        })
+        //========= new tile ===========//
+        const position5 = { x: 0, y: 0 }
+        const tile5 = interact('#t5');
+        tile5.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position5.x += event.dx
+                position5.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position5.x}px, ${position5.y}px)`
+                },
+            }
+        })
+        tile5.on('tap', function (event) {
+            rotateTile(5);
+        })
+        //========= new tile ===========//
+        const position6 = { x: 0, y: 0 }
+        const tile6 = interact('#t6');
+        tile6.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position6.x += event.dx
+                position6.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position6.x}px, ${position6.y}px)`
+                },
+            }
+        })
+        tile6.on('tap', function (event) {
+            rotateTile(6);
+        })
+        //========= new tile ===========//
+        const position7 = { x: 0, y: 0 }
+        const tile7 = interact('#t7');
+        tile7.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position7.x += event.dx
+                position7.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position7.x}px, ${position7.y}px)`
+                },
+            }
+        })
+        tile7.on('tap', function (event) {
+            rotateTile(7);
+        })
+        //========= new tile ===========//
+        const position8 = { x: 0, y: 0 }
+        const tile8 = interact('#t8');
+        tile8.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position8.x += event.dx
+                position8.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position8.x}px, ${position8.y}px)`
+                },
+            }
+        })
+        tile8.on('tap', function (event) {
+            rotateTile(8);
+        })
+        //========= new tile ===========//
+        const position9 = { x: 0, y: 0 }
+        const tile9 = interact('#t9');
+        tile9.draggable({
+        listeners: {
+                start (event) {
+                //console.log(event.type, event.target)
+                },
+                move (event) {
+                position9.x += event.dx
+                position9.y += event.dy
+
+                event.target.style.transform =
+                    `translate(${position9.x}px, ${position9.y}px)`
+                },
+            }
+        })
+        tile9.on('tap', function (event) {
+            rotateTile(9);
+        })
+    </script>
+
+
+
+    <div class="wrapper">
+        <div class="draggable" id="t1"> <img id="t1image" src="./imgs/tile1.png"> </div>
+        <div class="draggable" id="t2"> <img id="t2image" src="./imgs/tile2.png"> </div>
+        <div class="draggable" id="t3"> <img id="t3image" src="./imgs/tile3.png"> </div>
+        <div class="draggable" id="t4"> <img id="t4image" src="./imgs/tile4.png"> </div>
+        <div class="draggable" id="t5"> <img id="t5image" src="./imgs/tile5.png"> </div>
+        <div class="draggable" id="t6"> <img id="t6image" src="./imgs/tile6.png"> </div>
+        <div class="draggable" id="t7"> <img id="t7image" src="./imgs/tile7.png"> </div>
+        <div class="draggable" id="t8"> <img id="t8image" src="./imgs/tile8.png"> </div>
+        <div class="draggable" id="t9"> <img id="t9image" src="./imgs/tile9.png"> </div>
+    </div>
+
+    <div>
+        tap to rotate clockwise, drag to move
+    </div>
+    
+</body>
+</html>
