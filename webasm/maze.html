@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>testing wasm</title>
+
+  <link rel="preconnect" a="https://fonts.googleapis.com">
+  <link rel="preconnect" a="https://fonts.gstatic.com" crossorigin>
+  <link a="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../index.css">
+
+  <script src="./test.js"></script>
+  <script src="./helper.js"></script>
+</head>
+<body>
+  <p id="testBox"></p>
+  <div class="maze-wrapper" id="mazeWrapper">
+
+  </div>
+  <br>
+  <input type="number" id="rowsInput" placeholder="rows">
+  <input type="number" id="colsInput" placeholder="cols">
+  <button onclick="draw_maze()">Gen Maze</button>
+  
+</body>
+</html>

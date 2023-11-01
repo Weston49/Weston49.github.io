@@ -67,3 +67,41 @@ ul{
 .projects-wrapper a:hover{
     color: blue;
 }
+
+/*Maze stuff*/
+
+.maze-wrapper{
+    line-height: 0px;
+    margin:20px;
+}
+
+.maze-wrapper .cell{
+    width: 25px;
+    height: 25px;
+    background-color: blue;
+    margin: 0px;
+    padding: 0px;
+    border: 3px solid blue;
+}
+
+.maze-wrapper br{
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 0px;
+    display: block;
+    content: ""; 
+}
+
+.maze-wrapper .wall-left{
+    border-left: 3px solid black;
+}
+.maze-wrapper .wall-right{
+    border-right: 3px solid black;
+}
+.maze-wrapper .wall-up{
+    border-top: 3px solid black;
+}
+.maze-wrapper .wall-down{
+    border-bottom: 3px solid black;
+}

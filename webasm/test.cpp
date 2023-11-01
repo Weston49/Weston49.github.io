@@ -180,8 +180,11 @@ extern "C" {
     string s;
     maze = maze_gen(r,c);
     for(int i = 0; i < maze.size(); i++){
-      s = "\'WALL " + to_string(maze[i][0]) + " " + to_string(maze[i][1]) + "\'";
+      /*s = "\'WALL " + to_string(maze[i][0]) + " " + to_string(maze[i][1]) + "\'";
       s = "jsprint(" + s + ")";
+      emscripten_run_script(s.c_str());*/
+      s = to_string(maze[i][0]) + "," + to_string(maze[i][1]) + "," + to_string(c);
+      s = "genwall(" + s + ")";
       emscripten_run_script(s.c_str());
     } 
     return 0;
