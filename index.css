@@ -78,10 +78,10 @@ ul{
 .maze-wrapper .cell{
     width: 25px;
     height: 25px;
-    background-color: blue;
+    background-color: gray;
     margin: 0px;
     padding: 0px;
-    border: 3px solid blue;
+    border: 3px solid gray;
 }
 
 .maze-wrapper br{
@@ -104,4 +104,8 @@ ul{
 }
 .maze-wrapper .wall-down{
     border-bottom: 3px solid black;
+}
+
+.maze-wrapper .visiting{
+    background-color: rgb(7, 231, 7);
 }

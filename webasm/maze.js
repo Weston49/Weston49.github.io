@@ -698,7 +698,7 @@ function createExportWrapper(name) {
 // include: runtime_exceptions.js
 // end include: runtime_exceptions.js
 var wasmBinaryFile;
-  wasmBinaryFile = 'test.wasm';
+  wasmBinaryFile = 'maze.wasm';
   if (!isDataURI(wasmBinaryFile)) {
     wasmBinaryFile = locateFile(wasmBinaryFile);
   }
@@ -4716,9 +4716,6 @@ var wasmImports = {
 };
 var wasmExports = createWasm();
 var ___wasm_call_ctors = createExportWrapper('__wasm_call_ctors');
-var _int_sqrt = Module['_int_sqrt'] = createExportWrapper('int_sqrt');
-var _float_sqrt = Module['_float_sqrt'] = createExportWrapper('float_sqrt');
-var _test = Module['_test'] = createExportWrapper('test');
 var _gen_maze = Module['_gen_maze'] = createExportWrapper('gen_maze');
 var _main = Module['_main'] = createExportWrapper('main');
 var ___errno_location = createExportWrapper('__errno_location');

@@ -9,6 +9,8 @@
 
 using namespace std;
 
+////////disjoint set implementation
+
 class DisjointSet {
   public:
     DisjointSet(int nelements);
@@ -156,25 +158,97 @@ vector < vector <int> > maze_gen(int r, int c){
 }
 
 
+////////maze solver
+class Maze{
+  public: 
+    vector <char> cells; // [up, down, left, right, visited] <- the first 5 bits in the char
+    void DFS(int index);
+    vector<int> maze_solve(int r, int c, vector <vector <int> > walls);
+    int rows, cols;
+    vector <int> pathTaken;
+    bool solved;
+};
 
-vector<int> func(int n){
-  vector<int> v;
-  for(int i = 0; i < n; i++){
-    v.push_back(i*i);
+vector<int> Maze::maze_solve(int r, int c, vector <vector <int> > walls){ //returns a vector that represents every cell visited in the order it was visited, hopefully
+  rows = r;
+  cols = c;
+  cells.resize(r*c);
+  solved = false;
+  //init the maze graph with the edges having walls
+  for(int i = 0; i < r; i++){
+    for(int j = 0; j < c; j++){
+      cells[i*c+j] = 0;
+      if(i == 0){
+        cells[i*c+j] |= (1 << 4);
+      }
+      if(i == r-1){
+        cells[i*c+j] |= (1 << 3);
+      }
+      if(j == 0){
+        cells[i*c+j] |= (1 << 2);
+      }
+      if(j == c-1){
+        cells[i*c+j] |= (1 << 1);
+      }
+    }
   }
-  return v;
+
+  for(int i = 0; i < walls.size(); i++){
+    int c1 = walls[i][0];
+    int c2 = walls[i][1];
+    
+    if(c1 == c2-1){
+      cells[c1] |= (1 << 1);
+      cells[c2] |= (1 << 2);
+    }
+    if(c1 == c2-c){
+      cells[c1] |= (1 << 3);
+      cells[c2] |= (1 << 4);
+    }
+  }
+
+  DFS(0);
+  
+  return pathTaken;
 }
 
+void Maze::DFS(int index){
+  if(cells[index] & (1)){ //checks if we have visited this cell, if so, add it to the path still
+    //pathTaken.push_back(index);
+    return;
+  }
+  cells[index] |= 1; //sets the current indexed cell to visited
+  pathTaken.push_back(index); //stores that we are at this cell
+  if(index == cells.size()-1){ //if at finish cell, return
+    solved = true;
+    pathTaken.push_back(index);
+    return;
+  }
+
+  if(!(cells[index] & (1 << 1)) && !solved) DFS(index + 1);
+  if(!(cells[index] & (1 << 2)) && !solved) DFS(index - 1);
+  if(!(cells[index] & (1 << 3)) && !solved) DFS(index + cols);
+  if(!(cells[index] & (1 << 4)) && !solved) DFS(index - cols);
+
+  pathTaken.push_back(index);
+
+}
+
+int solve_maze(int r, int c, vector <vector <int> > walls){ //will store the solution path(s) in some javascript array of numbers, somehow
+  string s;
+  vector<int> mazePath;
+  Maze m;
+  mazePath = m.maze_solve(r, c, walls);
+  for(int i = 0; i < mazePath.size(); i++){
+    s = to_string(mazePath[i]);
+    s = "savePath(" + s + ")";
+    emscripten_run_script(s.c_str());
+  }
+  return 0;
+}
+
+
 extern "C" {
-  int int_sqrt(int x) {
-    return sqrt(x);
-  }
-  double float_sqrt(int x) {
-    return sqrt(x);
-  }
-  int test(int n, int i){
-    return func(n)[i];
-  }
   int gen_maze(int r, int c){
     vector <vector <int> > maze;
     string s;
@@ -187,6 +261,7 @@ extern "C" {
       s = "genwall(" + s + ")";
       emscripten_run_script(s.c_str());
     } 
+    solve_maze(r, c, maze);
     return 0;
   }
 }

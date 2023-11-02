@@ -1,7 +1,3 @@
-function sleep(ms){
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function jsprint(i){
   console.log(i);
 }
@@ -21,6 +17,15 @@ function genwall(c1, c2, cols){
   }
 }
 
+let pathArr = [];
+let mazeSize = 0;
+let running = false;
+
+function savePath(index){
+  pathArr.push(index);
+  console.log("MAZE PATH: " + index);
+}
+
 //new_function_name = Module.cwrap('name_original_func', 'return_type', ['array', 'of', 'paramater', 'types'])
 //parameter 2 is null if no return type, parameter 3 is optional if no parameters
 int_sqrt = Module.cwrap('int_sqrt', 'number', ['number'])
@@ -33,9 +38,11 @@ gen_maze = Module.cwrap('gen_maze', 'number', ['number', 'number']);
 
 
 function draw_maze(){
+  running = false;
   let rows = document.getElementById("rowsInput").value;
   let cols = document.getElementById("colsInput").value;
   document.getElementById("mazeWrapper").innerHTML = "";
+  pathArr = [];
   for(let i = 0; i < rows; i++){
     for(let j = 0; j < cols; j++){
       document.getElementById("mazeWrapper").insertAdjacentHTML("beforeend", "<div class='cell' id='cell" + (i*cols+j) + "'></div>");
@@ -55,4 +62,26 @@ function draw_maze(){
     document.getElementById("mazeWrapper").insertAdjacentHTML("beforeend", "<br>");
   }
   gen_maze(rows, cols);
+  mazeSize = rows*cols;
+}
+
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+async function visualizeDFS(){
+  if(!running){
+    running = true;
+    let speed = document.getElementById("speedInput").value;
+    for (let i = 0; i < pathArr.length; i++) {
+      if(running){
+        document.getElementById("cell" + (pathArr[i])).classList.toggle("visiting");
+        await sleep(speed);
+        if((pathArr[i] + 1) == mazeSize){
+          break;
+        }
+      }else{
+        break;
+      }
+    }
+    running = false;
+  }
 }
