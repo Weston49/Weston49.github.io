@@ -36,21 +36,19 @@ gen_maze = Module.cwrap('gen_maze', 'number', ['number', 'number']);
 
 //============================ Below this line is just pure js stuff that talks to the cpp above sometimes ===================================== 
 
+//calculates this value on page load so that it never changes, refresh the page to change these
+const width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+const height  = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
 
 function draw_maze(){
   running = false;
   let rows = document.getElementById("rowsInput").value;
   let cols = document.getElementById("colsInput").value;
   let cellSize = 0;
-  const width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  const height  = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
   if(!(document.getElementById("sizeBypass").checked)){
     cellSize = (width - (cols*2) - (width*0.3)) / cols;
-    //console.log("width: " + width);
-    //console.log("height: " + height);
-    //console.log(rows*cellSize);
-    //console.log("cell size: " + cellSize);
-    if((cellSize >= 4) && ((rows * cellSize) > (height))){
+    if((cellSize >= 4) && ((rows * cellSize) > (height*0.7))){
       alert("Maze will not fit on screen");
       return;
     }
