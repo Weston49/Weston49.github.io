@@ -41,10 +41,19 @@ function draw_maze(){
   running = false;
   let rows = document.getElementById("rowsInput").value;
   let cols = document.getElementById("colsInput").value;
+  let cellSize = 0;
   const width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  if((width - (cols*2) - (width*0.3)) / (cols) < 4){
-    alert("Maze will not fit on screen");
-    return;
+  const height  = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  if(!(document.getElementById("sizeBypass").checked)){
+    cellSize = (width - (cols*2) - (width*0.3)) / cols;
+    //console.log("width: " + width);
+    //console.log("height: " + height);
+    //console.log(rows*cellSize);
+    //console.log("cell size: " + cellSize);
+    if((cellSize >= 4) && ((rows * cellSize) > (height))){
+      alert("Maze will not fit on screen");
+      return;
+    }
   }
 
   document.getElementById("mazeWrapper").innerHTML = "";
