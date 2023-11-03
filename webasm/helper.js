@@ -47,7 +47,7 @@ function draw_maze(){
   let cols = document.getElementById("colsInput").value;
   let cellSize = 0;
   if(!(document.getElementById("sizeBypass").checked)){
-    cellSize = (width - (cols*2) - (width*0.3)) / cols;
+    cellSize = (width - (cols*2) - (width*0.45)) / cols;
     if((cellSize < 4) || ((rows * cellSize) > (height*0.7))){
       alert("Maze will not fit on screen");
       return;
@@ -79,8 +79,8 @@ function draw_maze(){
   var cells = document.getElementsByClassName('cell');
   for (var i = 0; i < cells.length; ++i) {
       var item = cells[i];  
-      item.style.width = ((width - (cols*2) - (width*0.3)) / (cols)) + "px";
-      item.style.height = ((width - (cols*2) - (width*0.3)) / (cols)) + "px";
+      item.style.width = ((cellSize) + "px");
+      item.style.height = ((cellSize) + "px");
   }
 }
 
