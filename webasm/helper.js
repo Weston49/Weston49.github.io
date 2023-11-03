@@ -48,7 +48,7 @@ function draw_maze(){
   let cellSize = 0;
   if(!(document.getElementById("sizeBypass").checked)){
     cellSize = (width - (cols*2) - (width*0.3)) / cols;
-    if((cellSize >= 4) && ((rows * cellSize) > (height*0.7))){
+    if((cellSize < 4) || ((rows * cellSize) > (height*0.7))){
       alert("Maze will not fit on screen");
       return;
     }
