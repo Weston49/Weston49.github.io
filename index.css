@@ -70,18 +70,39 @@ ul{
 
 /*Maze stuff*/
 
+.wrapper{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .maze-wrapper{
     line-height: 0px;
     margin:20px;
 }
 
+.maze-controls input{
+    text-align: center;
+    width: 80px;
+    font-size: 18px;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.maze-controls button{
+    border-radius: 15px;
+    font-size: 26px;
+    margin: 10px;
+}
+
 .maze-wrapper .cell{
-    width: 25px;
-    height: 25px;
+    width: 1vw;
+    height: 1vw;
     background-color: gray;
     margin: 0px;
     padding: 0px;
-    border: 3px solid gray;
+    border: 1px solid gray;
 }
 
 .maze-wrapper br{
@@ -94,16 +115,16 @@ ul{
 }
 
 .maze-wrapper .wall-left{
-    border-left: 3px solid black;
+    border-left: 1px solid black;
 }
 .maze-wrapper .wall-right{
-    border-right: 3px solid black;
+    border-right: 1px solid black;
 }
 .maze-wrapper .wall-up{
-    border-top: 3px solid black;
+    border-top: 1px solid black;
 }
 .maze-wrapper .wall-down{
-    border-bottom: 3px solid black;
+    border-bottom: 1px solid black;
 }
 
 .maze-wrapper .visiting{

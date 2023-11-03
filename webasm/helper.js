@@ -23,7 +23,7 @@ let running = false;
 
 function savePath(index){
   pathArr.push(index);
-  console.log("MAZE PATH: " + index);
+  //console.log("MAZE PATH: " + index);
 }
 
 //new_function_name = Module.cwrap('name_original_func', 'return_type', ['array', 'of', 'paramater', 'types'])
@@ -41,6 +41,12 @@ function draw_maze(){
   running = false;
   let rows = document.getElementById("rowsInput").value;
   let cols = document.getElementById("colsInput").value;
+  const width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  if((width - (cols*2) - (width*0.3)) / (cols) < 4){
+    alert("Maze will not fit on screen");
+    return;
+  }
+
   document.getElementById("mazeWrapper").innerHTML = "";
   pathArr = [];
   for(let i = 0; i < rows; i++){
@@ -63,6 +69,12 @@ function draw_maze(){
   }
   gen_maze(rows, cols);
   mazeSize = rows*cols;
+  var cells = document.getElementsByClassName('cell');
+  for (var i = 0; i < cells.length; ++i) {
+      var item = cells[i];  
+      item.style.width = ((width - (cols*2) - (width*0.3)) / (cols)) + "px";
+      item.style.height = ((width - (cols*2) - (width*0.3)) / (cols)) + "px";
+  }
 }
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))

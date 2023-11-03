@@ -15,16 +15,19 @@
   <script src="./helper.js"></script>
 </head>
 <body>
-  <p id="testBox"></p>
-  <div class="maze-wrapper" id="mazeWrapper">
+  <div class="wrapper">
+    <div class="maze-wrapper" id="mazeWrapper">
 
+    </div>
+      <br>
+      <div class="maze-controls">
+        <input type="number" id="rowsInput" placeholder="rows">
+        <input type="number" id="colsInput" placeholder="cols">
+        <input type="number" id="speedInput" placeholder="delay"><br>
+        <button onclick="draw_maze()">Gen Maze</button>
+        <button onclick="visualizeDFS()">Solve Maze</button>
+      </div>
   </div>
-  <br>
-  <input type="number" id="rowsInput" placeholder="rows">
-  <input type="number" id="colsInput" placeholder="cols">
-  <input type="number" id="speedInput" placeholder="MS delay">
-  <button onclick="draw_maze()">Gen Maze</button>
-  <button onclick="visualizeDFS()">Solve Maze</button>
   
 </body>
 </html>
