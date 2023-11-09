@@ -63,7 +63,7 @@ function isAdjacent(c1, c2){
   //console.log("X2: " + x2);
   //console.log("Y1: " + y1);
   //console.log("Y2: " + y2);
-  if(x1 == x2 && y1 == y2) return true;
+  //if(x1 == x2 && y1 == y2) return true;
   if(x2 > 0 && x1 == x2 - 1 && y2 == y1) return true;
   if(x2 < c-1 && x1 == x2 + 1 && y2 == y1) return true;
   if(y2 > 0 && y1 == y2 - 1 && x2 == x1) return true;
@@ -73,9 +73,16 @@ function isAdjacent(c1, c2){
 
 function toggle_cell(id){
   //console.log(previousClickedID[previousClickedID.length-1]);
-  if((previousClickedID[previousClickedID.length-1] == -1 && id == startID) || isAdjacent(previousClickedID[previousClickedID.length-1], id)){
+  if(previousClickedID[previousClickedID.length-1] == id){
     document.getElementById("cell" + (id)).classList.toggle("selected");
-    if(document.getElementById("cell" + (id)).classList.contains("selected")){
+    previousClickedID.pop();
+    if(previousClickedID.length == 0){
+      previousClickedID.push(-1);
+    }
+    blueCells--;
+  }else if((previousClickedID[previousClickedID.length-1] == -1 && id == startID) || isAdjacent(previousClickedID[previousClickedID.length-1], id)){
+    if(!(document.getElementById("cell" + (id)).classList.contains("selected"))){
+      document.getElementById("cell" + (id)).classList.toggle("selected");
       previousClickedID.push(id);
       blueCells++;
       if(id == finishID){
@@ -85,12 +92,6 @@ function toggle_cell(id){
           alert("Try again.");
         }
       }
-    }else{
-      previousClickedID.pop();
-      if(previousClickedID.length == 0){
-        previousClickedID.push(-1);
-      }
-      blueCells--;
     }
   }
   //console.log("Blue cells: " + blueCells);
