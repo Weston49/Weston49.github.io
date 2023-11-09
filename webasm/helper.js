@@ -89,7 +89,8 @@ const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 async function visualizeDFS(){
   if(!running){
     running = true;
-    let speed = document.getElementById("speedInput").value;
+    let speed = 0;
+    speed = document.getElementById("speedInput").value;
     for (let i = 0; i < pathArr.length; i++) {
       if(running){
         document.getElementById("cell" + (pathArr[i])).classList.toggle("visiting");

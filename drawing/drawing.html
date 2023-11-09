@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawing testing</title>
+  <script src="./drawing.js"></script>
+</head>
+<body>
+  <canvas id="canvas" style="border: 1px solid black"></canvas>
+  <button onclick="render()">start sim</button>
+  <button onclick="stop_render()">stop sim</button>
+  <input type="checkbox" id="playSim">Play Simulation<br>
+  <div class="slidecontainer">
+    <input type="range" min="0" max="100" value="50" class="slider" id="timeSlider">
+    <p id="timeDisplay"></p>
+  </div>
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+        onLoad();
+    }, false);
+  </script>
+</body>
+</html>

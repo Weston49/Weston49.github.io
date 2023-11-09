@@ -1,0 +1,52 @@
+body{
+  background-color: rgb(86, 86, 89);
+}
+
+.grid{
+  line-height: 0px;
+  border: 1px solid black;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.cell{
+  width: 5vmin;
+  height: 5vmin;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+}
+
+br{
+  height: 0px;
+  padding: 0px;
+  margin: 0px;
+  line-height: 0px;
+  display: block;
+  content: ""; 
+}
+
+.inner-start{
+  width: 2vmin;
+  height: 2vmin;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5vmin;
+  background-color: green;
+}
+
+.inner-finish{
+  width: 2vmin;
+  height: 2vmin;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5vmin;
+  background-color: red;
+}
+
+.selected{
+  background-color: aqua;
+}
