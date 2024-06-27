@@ -36,8 +36,6 @@ function onLoad(){
   }
 }
 
-
-
 function stop_render(){
   stop = true;
 }
